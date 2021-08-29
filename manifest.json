@@ -1,0 +1,33 @@
+{
+	"name": "Save PDF From Browser",
+	"description": "This extension helps you to easily group your pdf files and save locally without havig to download to your computer",
+	"version": "1.0",
+	"manifest_version": 3,
+	"background":{
+		"service_worker":"background.js"
+	},
+	"permissions":[
+		"storage",
+		"tabs"
+	],
+	"action": {
+		"default_popup":"index.html",
+		"default_icon": {
+		"16": "images/16.png",
+		"32": "images/32.png"
+	   }
+    },
+    "icons": {
+    	"16":"/images/16.png",
+    	"32": "/images/32.png"
+    },
+    "content_scripts": [
+    	{
+    		"matches":["*://*/.pdf"],
+    		"all_frames":true,
+    		"js": ["savepdf.js"]
+    		
+    	}
+    	
+    ]	
+}
